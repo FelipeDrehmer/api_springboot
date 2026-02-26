@@ -1,13 +1,13 @@
 package dev.java10x.api.service;
 
 import dev.java10x.api.dto.InfoResponse;
+import dev.java10x.api.dto.CursoResponse;
+import dev.java10x.api.dto.AlunoResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.ArrayList;
 
 @Service
 @RequiredArgsConstructor
@@ -19,8 +19,21 @@ public class ApiService {
     @Value("${spring.application.version}")
     private String versaoProjeto;
 
-    public InfoResponse getInfo() {
+    private final List<CursoResponse> cursos = List.of(
+            new CursoResponse(1, "Engenharia de Software"),
+            new CursoResponse(2, "Engenharia da Computação"),
+            new CursoResponse(3, "Engenharia Civil"),
+            new CursoResponse(4, "Engenharia Mecanica"),
+            new CursoResponse(5, "Engenharia de Dados")
+    );
 
+    private final List<AlunoResponse> alunos = List.of(
+            new AlunoResponse(10101, "Pedro", "Engenharia de Software", "Primeiro"),
+            new AlunoResponse(10102, "Felipe", "Engenharia de Dados", "Terceiro"),
+            new AlunoResponse(10103, "Davi", "Engenharia da Computação", "Quinto")
+    );
+
+    public InfoResponse getInfo() {
         String mensagem = "Sistema está rodando";
 
         return new InfoResponse(nomeProjeto,
@@ -30,18 +43,15 @@ public class ApiService {
                 mensagem);
     }
 
-    public List<String> listarCursos() {
-
-        List<String> cursosAtivos = new ArrayList<String>();
-
-        cursosAtivos.add("Engenharia de Software");
-        cursosAtivos.add("Engenharia da Computação");
-        cursosAtivos.add("Engenharia Civil");
-        cursosAtivos.add("Engenharia Mecanica");
-        cursosAtivos.add("Engenharia de Dados");
-
-        return cursosAtivos;
+    public List<CursoResponse> listarCursos() {
+        return cursos;
     }
 
+    public CursoResponse buscarCursoPorId(int id) {
+        return cursos.stream().filter(c -> c.getIdCurso() == id).findFirst().orElse(null);
+    }
 
+    public AlunoResponse buscarInfoAlunoPorMatricula(int matricula) {
+        return alunos.stream().filter(a -> a.getMatricula() == matricula).findFirst().orElse(null);
+    }
 }
