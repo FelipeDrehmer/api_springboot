@@ -109,7 +109,7 @@ Descrição: Retorna um curso específico pelo ID informado.
 ````
 Exemplo:
 ````
-http://localhost:8080/api/estudantes/1001
+http://localhost:8080/api/estudantes/10101
 ````
 Descrição: Retorna as informações de um aluno específico.
 ````
@@ -131,7 +131,7 @@ Descrição: Retorna as informações de um aluno específico.
 ````
 Exemplo:
 ````
-http://localhost:8080/api/estudantes/semestre/2024.1
+http://localhost:8080/api/estudantes/semestre/Primeiro
 ````
 Descrição: Retorna uma lista de alunos pertencentes ao semestre informado.
 
