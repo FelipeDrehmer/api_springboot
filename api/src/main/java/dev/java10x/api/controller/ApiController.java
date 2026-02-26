@@ -50,4 +50,12 @@ public class ApiController {
         return ResponseEntity.ok(aluno);
     }
 
+    @GetMapping("/estudantes/semestre/{semestre}")
+    public ResponseEntity<List<AlunoResponse>> buscarAlunosSemestre(@PathVariable String semestre) {
+
+        List<AlunoResponse> alunos = apiService.buscarAlunosPorPeriodo(semestre);
+
+        return ResponseEntity.ok(alunos);
+    }
+
 }
