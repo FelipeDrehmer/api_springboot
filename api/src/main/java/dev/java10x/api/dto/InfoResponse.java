@@ -1,8 +1,11 @@
 package dev.java10x.api.dto;
 
+import jakarta.persistence.Entity;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class InfoResponse {
 
     private String nomeProjeto;

@@ -30,15 +30,15 @@ public class ApiService {
     );
 
     private final List<AlunoResponse> alunos = List.of(
-            new AlunoResponse(10101, "Pedro", "Engenharia de Software", "Primeiro"),
-            new AlunoResponse(10102, "Felipe", "Engenharia de Dados", "Terceiro"),
-            new AlunoResponse(10103, "Davi", "Engenharia da Computação", "Quinto"),
-            new AlunoResponse(10104, "Fred", "Engenharia Mecanica", "Quinto"),
-            new AlunoResponse(10105, "Eduardo", "Engenharia Civil", "Primeiro"),
-            new AlunoResponse(10106, "Maria", "Engenharia da Computação", "Terceiro"),
-            new AlunoResponse(10107, "Ana", "Engenharia de Dados", "Quinto"),
-            new AlunoResponse(10108, "Debora", "Engenharia Mecanica", "Quinto"),
-            new AlunoResponse(10109, "Lucas", "Engenharia Civil", "Primeiro")
+            new AlunoResponse(10101, "Pedro", 3, "Primeiro"),
+            new AlunoResponse(10102, "Felipe", 2, "Terceiro"),
+            new AlunoResponse(10103, "Davi", 1, "Quinto"),
+            new AlunoResponse(10104, "Fred", 5, "Quinto"),
+            new AlunoResponse(10105, "Eduardo", 3, "Primeiro"),
+            new AlunoResponse(10106, "Maria", 2, "Terceiro"),
+            new AlunoResponse(10107, "Ana", 3, "Quinto"),
+            new AlunoResponse(10108, "Debora", 5, "Quinto"),
+            new AlunoResponse(10109, "Lucas", 1, "Primeiro")
     );
 
     public InfoResponse getInfo() {
@@ -56,7 +56,7 @@ public class ApiService {
     }
 
     public CursoResponse buscarCursoPorId(int id) {
-        return cursos.stream().filter(c -> c.getIdCurso() == id).findFirst().orElse(null);
+        return cursos.stream().filter(c -> c.getId() == id).findFirst().orElse(null);
     }
 
     public AlunoResponse buscarInfoAlunoPorMatricula(int matricula) {

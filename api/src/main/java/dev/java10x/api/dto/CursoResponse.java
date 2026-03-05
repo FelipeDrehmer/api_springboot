@@ -1,15 +1,24 @@
 package dev.java10x.api.dto;
 
+import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
+@Entity
+@Table(name = "Cursos")
 public class CursoResponse {
 
-    private int idCurso;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String nomeCurso;
 
-    public CursoResponse(int idCurso, String nomeCurso) {
-        this.idCurso = idCurso;
+    public CursoResponse() { }
+
+    public CursoResponse(int id, String nomeCurso) {
+        this.id = id;
         this.nomeCurso = nomeCurso;
     }
 }
