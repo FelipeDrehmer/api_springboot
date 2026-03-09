@@ -7,7 +7,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity
 @Table(name = "Alunos")
 public class AlunoResponse {
 

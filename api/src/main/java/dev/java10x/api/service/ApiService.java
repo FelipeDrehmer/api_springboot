@@ -3,6 +3,7 @@ package dev.java10x.api.service;
 import dev.java10x.api.dto.InfoResponse;
 import dev.java10x.api.dto.CursoResponse;
 import dev.java10x.api.dto.AlunoResponse;
+import dev.java10x.api.repository.AlunoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,8 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ApiService {
+
+    private final AlunoRepository alunoRepository;
 
     @Value("${spring.application.name}")
     private String nomeProjeto;
@@ -65,6 +68,10 @@ public class ApiService {
 
     public List<AlunoResponse> buscarAlunosPorPeriodo(String semestre) {
         return alunos.stream().filter(a -> a.getSemestre().contains(semestre)).toList();
+    }
+
+    public List<AlunoResponse> listarAlunos() {
+        return (List<AlunoResponse>) alunoRepository.findAll();
     }
 
 }
